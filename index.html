@@ -131,7 +131,7 @@
                     // Create an info window
                     const infoWindow = new google.maps.InfoWindow({
                         content: 
-                        "<div style='display: flex; flex-direction: column; align-items: center; justify-content: center;'><img style='width: 170px; height: 100px;' src=" + place.picture + " alt=place.title><h3>" + place.title + "</h3><p>Adresse : " + place.address + "</p><a href='" + place.link + "' target='_blank'>Plus d'informations</a>",
+                        "<a href='" + place.link + "' target='_blank'><div style='display: flex; flex-direction: column; align-items: center; justify-content: center;'><img style='width: 170px; height: 100px;' src=" + place.picture + " alt=place.title><h3>" + place.title + "</h3><p>Adresse : " + place.address + "</p>Plus d'informations</a>",
                     });
 
                     // Open the info window
