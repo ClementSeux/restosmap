@@ -85,6 +85,9 @@
                         lat: 45.7486111,
                         lng: 4.8433333,
                         title: "Sushimasa Jean Macé",
+                        address: "53 Rue de l'Université, 69007 Lyon",
+                        picture: "./pic1.png",
+                        link: "https://www.google.com/search?q=Sushimasa+Jean+Mac%C3%A9&rlz=1C1GCEU_enFR1072FR1072&oq=Sushimasa+Jean+Mac%C3%A9&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIQCAEQLhivARjHARiABBiOBTIHCAIQABiABDIHCAMQABiABDIKCAQQABiABBiiBDIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPNIBBzY2OGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#:~:text=Adresse%C2%A0%3A-,53%20Rue%20de%20l%27Universit%C3%A9%2C%2069007%20Lyon,-Horaires%C2%A0%3A"
                     },
                     // 45.759304,4.851845,17
                     {
@@ -106,14 +109,26 @@
                     },
                 ];
 
-                // Add markers to the map
-                locations.forEach((location) => {
-                    const marker = new google.maps.Marker({
-                        position: { lat: location.lat, lng: location.lng },
-                        map: map,
-                        title: location.title,
-                    });
+            
+                locations.forEach(place => {
+                const marker = new google.maps.Marker({
+                    position: { lat: place.lat, lng: place.lng },
+                    map: map,
+                    title: place.title,
                 });
+
+                // Add an onclick event to the marker
+                marker.addListener("click", () => {
+                    // Create an info window
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: 
+                        "<img src=" + place.picture + "alt=place.title><h3>" + place.title + "</h3><hr><p>Adresse : " + place.address + "</p><hr /><a href='" + place.link + "' target='_blank'>Plus d'informations</a>",
+                    });
+
+                    // Open the info window
+                    infoWindow.open(map, marker);
+                });
+            });
             }
         </script>
 
